@@ -1,0 +1,100 @@
+<html>
+
+<body>
+  <div style="box-align: center;color:white; border-radius: 5pt; 
+  text-align: center; height: 40px; width: 300px;
+  border: 1px solid royalblue;
+  outline-style: double;
+  outline-color: green;
+  margin-left: 2mm;
+  background-color: black">
+
+  <h4>
+      <b>University Management System</b>
+  </h4>
+</div>
+  <div class="buttonclass">
+    <input type="button" class="btn btn-primary" [routerLink]="['/menupage']" value="Home" />&nbsp;&nbsp;
+
+    <input type="button" class="btn btn-primary" [routerLink]="['/logoutpage']" value="Logout" />
+  </div>
+  <nav class="navbar navbar-default">
+    <div class="nav navbar-nav" class="dropdown" class="navbar-brand">
+      <button class="nav-item" class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Load
+        <span class="caret"></span>
+     </button>
+
+       <ul class="dropdown-menu" style="background-color: rgb(154, 156, 167); color: white" aria-labelledby="dropdownMenuButton">
+      
+        <li><a [routerLink]="['/loadsingle']" class="dropdown-item" style="color: black"><b>Single</b></a></li>
+        <li><a [routerLink]="['/loadbulk']" class="dropdown-item" style="color: black" ><b>Bulk</b></a></li>
+  </ul>
+      
+
+    </div>
+
+    <div class="nav navbar-nav" class="dropdown" class="navbar-brand">
+
+      <button class="nav-item" [routerLink]="['/viewpage']" class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <b>  View</b>
+
+      </button>
+
+    </div>
+    <div class="nav navbar-nav" class="dropdown" class="navbar-brand">
+
+      <button class="nav-item" [routerLink]="['/modifypage']" class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b>Modify</b>
+      </button>
+
+
+    </div>
+
+    <div class="nav navbar-nav" class="dropdown" class="navbar-brand" class="btn-group btn-group" style="margin-top:15px">
+
+
+
+      <button class="nav-item" class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+
+      <b>Delete</b>
+
+        <span class="caret"></span>
+
+      </button>
+
+
+      
+      <ul class="dropdown-menu" style="background-color: rgb(154, 156, 167); color: white"  aria-labelledby="dropdownMenuButton">
+
+        <li>
+          <a class="dropdown-item" [routerLink]="['/delpage']" ><b style="color: black">Single</b></a>
+        </li>
+
+
+        <li>
+          <a class="dropdown-item" class="btn-group btn-group" aria-expanded="false"   aria-haspopup="true" class="btn btn dropdown-toggle"  data-toggle="dropdown" href="#"><b style="color: black">Bulk</b></a>
+          <ul>
+            <li> <a class="dropdown-item" [routerLink]="['/deletebulk']" ><b style="color: black">Select</b></a></li>
+            <li> <a class="dropdown-item" [routerLink]="['/deletetable']"><b style="color: black">All</b></a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+  <br/>
+</body>
+<br/>
+
+
+
+
+</html>

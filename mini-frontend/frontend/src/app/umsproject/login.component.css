@@ -1,0 +1,31 @@
+div{
+    align-content: center;
+  margin-left: 50mm;
+}
+form{
+    width:500px;
+    height:400px;
+    }
+
+label{
+    color:white;
+}
+h1{
+    color:white;
+    margin-left: 50mm;
+}
+
+button{
+    text-align: center;
+    margin-left: 60mm;
+    background-color: green;
+}
+pre{
+    width:300px;
+    margin-left: 50mm;
+ 
+}
+p{
+    background-color: white;
+    color:black;
+}

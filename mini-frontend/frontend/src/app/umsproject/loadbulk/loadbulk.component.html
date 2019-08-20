@@ -1,0 +1,25 @@
+<html>
+<app-menu></app-menu>
+
+<b style="color: white ;margin-left: 20px" >Table:
+    <select style="background-color: #41424D; margin-left: 20px;color: rgb(238, 238, 238);font-size: 13pt" [(ngModel)]="selectedtable"
+      name="--select--" (change)="selected($event)">
+      <option *ngFor="let item of tables" [value]="item">{{item}}</option>
+  
+  
+    </select>
+  </b>
+  <b style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selected table is:</b>
+  <b style="color: rgb(255, 145, 0);font-size: 15pt"> {{selectedtable}}</b>
+  <br/>
+  <br/>
+
+
+<label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+   
+  <button type="submit" class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+</html>
+
+

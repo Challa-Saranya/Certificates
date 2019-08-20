@@ -1,0 +1,30 @@
+.buttonclass{
+    text-align: right;
+    margin-right: 50px;
+
+}
+div{
+    text-align: left;
+    margin-left: 20px;
+}
+button{
+     background-color:rgba(4, 129, 245, 0.603); 
+    color: white;
+}
+nav{
+    background-color:black;
+    border-style: hidden hidden solid hidden; 
+    border-color:rgb(214, 180, 180);
+    border-width: 3pt;
+    
+}
+a{
+   
+    color: white;
+}
+/* html{
+    background-color: #41424D;
+} */
+body{
+    background-color: black;
+}

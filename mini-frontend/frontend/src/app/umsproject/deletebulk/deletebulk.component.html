@@ -1,0 +1,177 @@
+<p>deletebulk works!</p>
+<app-menu></app-menu>
+
+
+<b style="color: white ;margin-left: 20px">Table:
+    <select style="background-color: #41424D; margin-left: 20px;color: rgb(238, 238, 238);font-size: 13pt" [(ngModel)]="selectedtable"
+        name="--select--">
+        <option *ngFor="let item of tables" [value]="item">{{item}}</option>
+
+
+    </select>
+</b>
+
+
+<!--  table:
+  <select (change)="selectChangeHandler($event)">
+    <option>--select--</option>
+    <option>colleges</option>
+    <option>Courses</option>
+  </select> -->
+
+<b style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selected table is:</b>
+<b style="color: rgb(255, 145, 0);font-size: 15pt"> {{selectedtable}}</b>
+<br/>
+<br/>
+<div [ngSwitch]="selectedtable">
+
+    <div *ngSwitchCase="'college'">
+
+        <table>
+            <tr>
+                <th>Select</th>
+                <th>S.No</th>
+                <th>College Code</th>
+                <th>College Name</th>
+                <th>College Location</th>
+                <th>Affliated Date</th>
+            </tr>
+            <br>
+            <br/>
+       
+            <tr *ngFor="let c of collegedata">
+                <td>
+                    <input type="checkbox" name="deletecheck" value="{{c.sno}}" (click)="selectId(c.sno,$event)" /> 
+                </td>
+                <td>
+                    <input type="text" value={{c.sno}}> 
+                </td>
+                &nbsp;
+                <td>
+                    <br/>
+                    <input type="text" value={{c.collegeCode}}> 
+                </td>
+                &nbsp;
+                <td>
+                    <br/>
+                    <input type="text" value={{c.collegeName}}> 
+                </td>
+                &nbsp;
+                <td>
+                    <br/>
+                    <input type="text" value={{c.collegeLocation}}> 
+                </td>
+                &nbsp;
+                <td>
+                    <br/>
+                    <input type="text" value={{c.affliatedDate}}> 
+                </td>
+                &nbsp;
+            </tr>
+        </table>
+        <input type="submit" value="Delete" class="btn btn-primary" (click)="onDelete1()" />
+        <input type="reset" class="btn btn-primary" value="Cancel" />
+    </div>
+    <div *ngSwitchCase="'courses'">
+        <table>
+            <tr *ngFor="let c of coursedata">
+                <br/>
+
+                <td>
+                    <input type="checkbox" name="deletecheck" value="{{c.courseId}}" (click)="selectId(c.courseId,$event)" /> </td>
+
+
+                <td>
+                    <input type="text" value={{c.courseId}}> </td>
+
+                <td>
+
+                    <input type="text" value={{c.courseName}}> </td>
+                <td>
+
+                    <input type="text" value={{c.courseDuration}}> </td>
+                <td>
+
+                    <input type="text" value={{c.noOfSems}}> </td>
+
+            </tr>
+        </table>
+        <input type="submit" value="delete" class="btn btn-large btn-primary" (click)="deleteCourse()" />
+        <input type="reset" value="cancel" />
+    </div>
+
+
+    <div *ngSwitchCase="'canteen'">
+
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Order Date</th>
+
+            </tr>
+            <tr *ngFor="let canteen of canteenData">
+                <td>
+                    <br/>
+                    <input type="checkbox" name="deletecheck" value="{{canteen.id}}" (click)="selectId(canteen.id,$event)" /> </td>
+                <td>
+                    <br/>
+
+                    <input value={{canteen.id}}> </td>
+                <td>
+                    <br/>
+
+                    <input value={{canteen.itemName}}> </td>;
+                <td>
+                    <br/>
+
+                    <input value={{canteen.itemPrice}}> </td>
+                <td>
+                    <br/>
+
+                    <input value={{canteen.date}}> </td>
+            </tr>
+
+        </table>
+
+        <button class="btn btn-primary" (click)="onDelete2(canteen)">Delete</button>
+
+
+
+    </div>
+
+    <div *ngSwitchCase="'placements'">
+
+        <table>
+            <tr>
+                <th>Company Id</th> &nbsp;&nbsp;&nbsp;
+                <th>Company Name</th>&nbsp;&nbsp;&nbsp;
+                <th>Visited On Date</th>&nbsp;&nbsp;&nbsp;
+                <th>No Of Placements</th>&nbsp;&nbsp;&nbsp;
+
+            </tr>
+            <tr *ngFor="let placement of placementData">
+                <td>
+                    <input type="checkbox" name="deletecheck" value="{{placement.companyId}}" (click)="selectId(placement.companyId,$event)"
+                    /> </td>
+                <td>
+                    <br/>
+                    <input value={{placement.companyId}}> </td>&nbsp;&nbsp;&nbsp;
+                <td>
+                    <br/>
+                    <input value={{placement.companyName}}> </td>&nbsp;&nbsp;&nbsp;
+                <td>
+                    <br/>
+                    <input value={{placement.visitedOnDate}}> </td>&nbsp;&nbsp;&nbsp;
+                <td>
+                    <br/>
+                    <input value={{placement.noOfPlacements}}> </td>&nbsp;&nbsp;&nbsp;
+        </table>
+
+        <button class="btn btn-primary" (click)="onDelete(placement)">Delete</button>
+
+
+
+    </div>
+</div>

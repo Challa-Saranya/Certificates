@@ -1,0 +1,43 @@
+<app-menu>
+</app-menu>
+
+
+<b style="color: white ;margin-left: 20px">Table:
+    <select style="background-color: #41424D; margin-left: 20px;color: rgb(238, 238, 238);font-size: 13pt" [(ngModel)]="selectedtable"
+        name="--select--">
+        <option *ngFor="let item of tables" [value]="item">{{item}}</option>
+
+
+    </select>
+</b>
+
+
+<!--  table:
+  <select (change)="selectChangeHandler($event)">
+    <option>--select--</option>
+    <option>colleges</option>
+    <option>Courses</option>
+  </select> -->
+
+<b style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selected table is:</b>
+<b style="color: rgb(255, 145, 0);font-size: 15pt"> {{selectedtable}}</b>
+
+<div [ngSwitch]="selectedtable">
+    <div *ngSwitchCase="'college'">
+        hiii college
+        <button type="submit" class="btn btn-primary" (click)="deleteCollege()">Delete</button>
+
+    </div>
+    <div *ngSwitchCase="'courses'">
+        hiiiiii course
+        <button type="submit" class="btn btn-primary" (click)="deleteCourse()">Delete</button>
+    </div>
+    <div *ngSwitchCase="'canteen'">
+        hiiiiii canteen
+        <button type="submit" class="btn btn-primary" (click)="deleteCanteen()">Delete</button>
+    </div>
+    <div *ngSwitchCase="'placements'">
+        hiiiiii placemnts
+        <button type="submit" class="btn btn-primary" (click)="deletePlacement()">Delete</button>
+    </div>
+</div>

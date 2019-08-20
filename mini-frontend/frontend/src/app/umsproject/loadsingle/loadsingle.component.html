@@ -1,0 +1,207 @@
+<body style="background-color :black">
+  <app-menu></app-menu>
+  <b style="color: white ;margin-left: 20px">Table:
+    <select style="background-color: #41424D; margin-left: 20px;color: rgb(238, 238, 238);font-size: 13pt" [(ngModel)]="selectedtable"
+      name="--select--">
+      <option *ngFor="let item of tables" [value]="item">{{item}}</option>
+
+
+    </select>
+  </b>
+  <b style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selected table is:</b>
+  <b style="color: rgb(255, 145, 0);font-size: 15pt"> {{selectedtable}}</b>
+
+
+
+
+
+  <div [ngSwitch]="selectedtable">
+
+    <div *ngSwitchCase="'college'">
+
+      <form #nameref>
+        <table>
+
+          <br/>
+          <tr>
+            <td>College Code:</td>
+            <td>
+              <input type="text" name="code" [(ngModel)]="model.collegeCode">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>College Name:</td>
+            <td>
+              <input type="text" name="name" [(ngModel)]="model.collegeName">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>College Location:</td>
+            <td>
+              <input type="text" name="location" [(ngModel)]="model.collegeLocation">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>Affliated Date:</td>
+            <td>
+              <input type="date" name="date" [(ngModel)]="model.affliatedDate">
+            </td>
+          </tr>
+          <br/>
+
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-success" (click)="addcollege()">Submit</button>
+            </td>
+            <td>
+              <button type="reset" class="btn btn-danger">Cancel</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+
+    <div *ngSwitchCase="'courses'">
+
+
+      <form>
+        <table>
+
+          <br/>
+          <tr>
+            <td> Course Id:</td>
+            <td>
+              <input type="number" name="id" [(ngModel)]="model.courseId">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>Course Name:</td>
+            <td>
+              <input type="text" name="name" [(ngModel)]="model.courseName">
+            </td>
+          </tr>
+          <br/>
+
+
+          <tr>
+            <td>Duration:</td>
+            <td>
+              <input type="number" name="duration" [(ngModel)]="model.courseDuration">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>No.Of Semesters:</td>
+            <td>
+              <input type="number" name="sems" [(ngModel)]="model.noOfSems">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-success" (click)="addcourse()">Submit</button>
+            </td>
+            <td>
+              <button type="reset" class="btn btn-danger">Cancel</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div *ngSwitchCase="'canteen'">
+
+
+      <form>
+        <table>
+
+          <br/>
+
+          <br/>
+          <tr>
+            <td>Item Name:</td>
+            <td>
+              <input type="text" name="name" [(ngModel)]="model.itemName">
+            </td>
+          </tr>
+          <br/>
+
+          <tr>
+            <td>Item Price:</td>
+            <td>
+              <input type="number" name="price" [(ngModel)]="model.itemPrice">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td> Order Date:</td>
+            <td>
+              <input type="date" name="date" [(ngModel)]="model.date">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-success" (click)="addItem()">Submit</button>
+            </td>
+            <td>
+              <button type="reset" class="btn btn-danger">Cancel</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <div *ngSwitchCase="'placements'">
+
+
+      <form>
+        <table>
+
+          <br/>
+          <tr>
+            <td>Company Id:</td>
+            <td>
+              <input type="number" name="id" [(ngModel)]="model.companyId">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>Company Name:</td>
+            <td>
+              <input type="text" name="name" [(ngModel)]="model.companyName">
+            </td>
+          </tr>
+          <br/>
+
+          <tr>
+            <td>No.Of Placements:</td>
+            <td>
+              <input type="number" name="placements" [(ngModel)]="model.noOfPlacements">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>Visited On Date:</td>
+            <td>
+              <input type="date" name="date" [(ngModel)]="model.visitedOnDate">
+            </td>
+          </tr>
+          <br/>
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-success" (click)="addPlacementData()">Submit</button>
+            </td>
+            <td>
+              <button type="reset" class="btn btn-danger">Cancel</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    </div>
+    </body>

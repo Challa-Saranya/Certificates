@@ -1,0 +1,36 @@
+input{
+    background-color: black;
+}
+
+div{
+    text-align: left;
+     margin-left: 40px; 
+    
+}
+.buttonclass{
+    text-align: right;
+    margin-right: 50px;
+   
+}
+button{
+color: white;
+
+    margin-left: 100px;
+    
+}
+input{
+    color: white;
+}
+table{
+    margin-left: 100px;
+}
+
+b{
+    margin-left: 40px;
+}
+td{
+    color: rgb(70, 200, 240);
+    text-align: center;
+    font-size: 13pt;
+    margin-left: 100px;
+}

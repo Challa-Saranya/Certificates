@@ -1,0 +1,28 @@
+ 
+div{
+    text-align: left;
+    margin-left: 20px;
+}
+th{
+    color: rgb(70, 200, 240);
+    text-align: center;
+    font-size: 13pt;
+}
+td{
+    color: white;
+    font-size: small;
+    text-align: center;
+}
+input{
+    background-color: #41424D;
+    color: white;
+    text-align: center;
+}
+button{
+   
+    color: white;
+}
+table{
+    text-align: center;
+    margin-left: 80px;
+}

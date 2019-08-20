@@ -1,0 +1,408 @@
+<app-menu>
+</app-menu>
+<!-- <b style="margin-left: 40px; color: white; font-size: medium">Select table:</b>
+<select [(ngModel)]="selectedtable" style="color: white; margin-left:30px; background-color: #41424D;block-size: 30px">
+  <option style="color: white;font-size: medium" *ngFor="let item of options" [value]="item">{{item}}</option>
+</select> -->
+<b style="color: white ;margin-left: 20px">Table:
+  <select style="background-color: #41424D; margin-left: 20px;color: rgb(238, 238, 238);font-size: 13pt" [(ngModel)]="selectedtable"
+    name="--select--">
+    <option *ngFor="let item of tables" [value]="item">{{item}}</option>
+
+
+  </select>
+</b>
+<b style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selected table is:</b>
+<b style="color: rgb(255, 145, 0);font-size: 15pt"> {{selectedtable}}</b>
+
+<div [ngSwitch]="selectedtable" style="text-align: center">
+  <div *ngSwitchCase="'college'">
+    <div *ngIf="b">
+      <table>
+        <tr>
+          <th>sno</th> &nbsp;&nbsp;&nbsp;
+          <th>College Code</th>&nbsp;&nbsp;&nbsp;
+          <th>College Name</th>&nbsp;&nbsp;&nbsp;
+          <th>College Location</th>&nbsp;&nbsp;&nbsp;
+          <th>Affliated Date</th>
+        </tr>
+
+        <tr *ngFor="let college of collegedata">
+
+          <td>
+            <br/>
+            <input value={{college.sno}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{college.collegeCode}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{college.collegeName}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{college.collegeLocation}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{college.affliatedDate}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <button class="btn btn-primary" (click)="onselect(college)">Select</button>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <div style="margin-left: 380pt">
+        <button type="submit" class="btn btn-success" (click)="onselectnext()">Next</button>&nbsp;&nbsp;&nbsp;
+
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+
+    </div>
+    <div *ngIf="a">
+      <table>
+        <tr>
+          <th>Fields</th>
+          <th>olddata</th>&nbsp;&nbsp;&nbsp;
+          <th>newdata</th>
+        </tr>
+        <br/>
+        <tr>
+          <td> Sno </td>
+          <td>
+            <input value="{{rowdata.sno}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="sno" [(ngModel)]="model.sno">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td>College Code </td>
+          <td>
+            <input value="{{rowdata.collegeCode}}" disabled> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="collegeCode" [(ngModel)]="model.collegeCode">
+          </td>
+        </tr>
+        <br/>
+
+        <tr>
+
+          <td> College Name</td>
+          <td>
+            <input value=" {{rowdata.collegeName}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="collegeName" [(ngModel)]="model.collegeName">
+          </td>
+        </tr>
+        <br/>
+
+        <tr>
+          <td> College Location</td>
+          <td>
+            <input value=" {{rowdata.collegeLocation}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="collegeLocation" [(ngModel)]="model.collegeLocation">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> College affliatedDate</td>
+          <td>
+            <input value="{{rowdata.affliatedDate}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="affliatedDate" [(ngModel)]="model.affliatedDate">
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <button class="btn btn-success" (click)="update(model)">Submit</button>
+
+    </div>
+  </div>
+  <div *ngSwitchCase="'courses'">
+    <div *ngIf="b">
+      <table>
+        <tr>
+          <th>Course Id</th> &nbsp;&nbsp;&nbsp;
+          <th>Course Name</th>&nbsp;&nbsp;&nbsp;
+          <th>Course Duration</th>&nbsp;&nbsp;&nbsp;
+          <th>No of Sems</th>&nbsp;&nbsp;&nbsp;
+
+        </tr>
+        <br/>
+        <tr *ngFor="let course of coursesdata">
+          <td>
+            <br/>
+            <input value={{course.courseId}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{course.courseName}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{course.courseDuration}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{course.noOfSems}}> </td>&nbsp;&nbsp;&nbsp;
+
+          <td>
+            <br/>
+            <button (click)="selectedcourse(course)" class="btn btn-primary">Select</button>
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <div style="margin-left: 330pt">
+        <button type="submit" class="btn btn-success" (click)="onselectnext()">Next</button>&nbsp;&nbsp;&nbsp;
+
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+    <div *ngIf="a">
+      <table>
+        <tr>
+          <th>Fields</th>
+          <th>Old Data</th>&nbsp;&nbsp;&nbsp;
+          <th>New Data</th>
+        </tr>
+        <br/>
+        <tr>
+          <td>Course Id </td>
+          <td>
+            <input value="{{ rowdata.courseId}}" disabled> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="courseId" [(ngModel)]="model.courseId">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> Course Name</td>
+          <td>
+            <input value=" {{ rowdata.courseName}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="courseName" [(ngModel)]="model.courseName">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> Course Durtaion</td>
+          <td>
+            <input value="{{ rowdata.courseDuration}} " disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="courseDuration" [(ngModel)]="model.courseDuration">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> No.Of Sems</td>
+          <td>
+            <input value="{{ rowdata.noOfSems}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="noOfSems" [(ngModel)]="model.noOfSems">
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <button class="btn btn-success" (click)="update(model)">Submit</button>
+
+    </div>
+  </div>
+  <div *ngSwitchCase="'canteen'">
+    <div *ngIf="b">
+      <table>
+        <br/>
+        <tr>
+          <th>Id</th> &nbsp;&nbsp;&nbsp;
+          <th>Item Name</th>&nbsp;&nbsp;&nbsp;
+          <th>Item Price</th>&nbsp;&nbsp;&nbsp;
+          <th>Order Date</th>&nbsp;&nbsp;&nbsp;
+
+        </tr>
+        <tr *ngFor="let canteen of canteenData">
+
+          <td>
+            <br/>
+            <input value={{canteen.id}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{canteen.itemName}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{canteen.itemPrice}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{canteen.date}}> </td>&nbsp;&nbsp;&nbsp;
+
+          <td>
+            <br/>
+            <button class="btn btn-primary" (click)="selectedCanteen(canteen)">Select</button>
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <div style="margin-left: 330pt">
+        <button type="submit" class="btn btn-success" (click)="onselectnext()">Next</button>&nbsp;&nbsp;&nbsp;
+
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+    <div *ngIf="a">
+      <table>
+        <br/>
+        <tr>
+          <th>Fields</th>
+          <th>Old Data</th>&nbsp;&nbsp;&nbsp;
+          <th>New Data</th>
+        </tr>
+        <br/>
+        <tr>
+          <td>Item Id </td>
+          <td>
+            <input value="{{ rowdata.id}}" disabled> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="id" [(ngModel)]="model.id">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td>Item Name</td>
+          <td>
+            <input value=" {{ rowdata.itemName}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="itemName" [(ngModel)]="model.itemName">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> Item Price</td>
+          <td>
+            <input value="{{ rowdata.itemPrice}} " disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="number" name="itemPrice" [(ngModel)]="model.itemPrice">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> Order Date</td>
+          <td>
+            <input value="{{ rowdata.date}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="date" name="date" [(ngModel)]="model.date">
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <button class="btn btn-success" (click)="update(model)">Submit</button>
+
+    </div>
+  </div>
+  <div *ngSwitchCase="'placements'">
+    <div *ngIf="b">
+      <table>
+        <br/>
+        <tr>
+          <th>Company Id</th> &nbsp;&nbsp;&nbsp;
+          <th>Company Name</th>&nbsp;&nbsp;&nbsp;
+          <th>Visited On Date</th>&nbsp;&nbsp;&nbsp;
+          <th>No Of Placements</th>&nbsp;&nbsp;&nbsp;
+
+        </tr>
+        <br/>
+        <tr *ngFor="let placement of placementData">
+
+          <td>
+            <br/>
+            <input value={{placement.companyId}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{placement.companyName}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{placement.visitedOnDate}}> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <br/>
+            <input value={{placement.noOfPlacements}}> </td>&nbsp;&nbsp;&nbsp;
+
+          <td>
+            <br/>
+            <button (click)="selectedPlacement(placement)" class="btn btn-primary">Select</button>
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <div style="margin-left: 280pt">
+        <button type="submit" class="btn btn-success" (click)="onselectnext()">Next</button>
+        &nbsp;&nbsp;&nbsp;
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+    <div *ngIf="a">
+      <table>
+        <br/>
+        <tr>
+          <th>Fields</th>
+          <th>olddata</th>&nbsp;&nbsp;&nbsp;
+          <th>newdata</th>
+        </tr>
+        <br/>
+        <tr>
+          <td>Company Id </td>
+          <td>
+            <input value="{{ rowdata.companyId}}" disabled> </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="companyId" [(ngModel)]="model.companyId">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td>Company Name</td>
+          <td>
+            <input value=" {{ rowdata.companyName}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="text" name="companyName" [(ngModel)]="model.companyName">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> Visited On Date</td>
+          <td>
+            <input value="{{ rowdata.visitedOnDate}} " disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="date" name="visitedOnDate" [(ngModel)]="model.visitedOnDate">
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td> No Of Placements</td>
+          <td>
+            <input value="{{ rowdata.noOfPlacements}}" disabled>
+          </td>&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="number" name="noOfPlacements" [(ngModel)]="model.noOfPlacements">
+          </td>
+        </tr>
+        <br/>
+      </table>
+      <br/>
+      <button (click)="update(model)" class="btn btn-success">Submit</button>
+
+    </div>
+  </div>
+</div>

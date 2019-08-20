@@ -1,0 +1,39 @@
+
+
+    <div class="container" style="background-color:black">
+        <br>
+        <br>
+       
+    
+        <div style="background-color:white;border:2; border-color:white;border-radius: 3pt;text-align: center;height: 30px;width: 300px">
+            <b style="color:black">university management system</b>
+        </div>
+    
+    
+        <h1>
+            <b>Log in!</b>
+        </h1>
+        <form #userForm='ngForm'>
+    
+    
+            <div class="form-group" style="height: 40px;width: 400px">
+                <label style="color: dimgrey">USERNAME OR EMAIL</label>
+                <input required  type="text" class="form-control" name="name" [(ngModel)]="model.email"/>
+            </div>
+        <br/>
+            <div class="form-group" style="height: 40px;width: 400px">
+                <label style="color: dimgrey">PASSWORD</label>
+                <input required  type="password" class="form-control" name="password" [(ngModel)]="model.password"/>
+            </div>
+        <br/>
+            <button type="submit"(click)="onLogin()" >Log in </button>&nbsp;
+    
+            <b style="text-align: left"><a [routerLink]="['/forgotpassword']">Forgot Password?</a></b>
+        <br/>
+    <br/>
+            <div style="background-color:dimgray;border-radius: 3pt;height: 40px;width: 400px;text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif">
+                <br/>
+                <b style="text-align: center">Need An Account?</b><a [routerLink]="['/signuppage']"><b style="color: blue">Sign up now!</b></a>
+                </div>
+        </form>
+    </div>

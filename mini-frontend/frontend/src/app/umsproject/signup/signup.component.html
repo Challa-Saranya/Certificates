@@ -1,0 +1,268 @@
+<html>
+
+<body class="bg">
+
+    <form #userform="ngForm">
+
+        <div class="container">
+
+            <h1>Signup</h1>
+
+            <p>Please fill in this form to create an account.</p>
+
+            <hr>
+
+
+            <div class="form-group" [class.has-error]="firstnameControl.invalid
+&& firstnameControl.touched" [class.has-success]="firstnameControl.valid">
+
+                <label for="firstname">FirstName</label>
+
+                <input type="text" placeholder="Enter First Name" required id="firstname" pattern="[A-Z][a-z]+" [(ngModel)]="model.firstname"
+                    name="firstname" class="form-control" #firstnameControl="ngModel">
+
+                <span class="help-block" *ngIf="firstnameControl.invalid
+&& firstnameControl.touched">First Name is Required or it Doesn't match the pattern</span>
+
+
+
+
+            </div>
+
+
+
+            <div class="form-group" [class.has-error]="lastnameControl.invalid
+&& lastnameControl.touched" [class.has-success]="lastnameControl.valid">
+
+                <label for="lastname">LastName</label>
+
+                <input type="text" placeholder="Enter Last Name" required id="lastname" pattern="[A-Z][a-z]+" [(ngModel)]="model.lastname"
+                    name="lastname" class="form-control" #lastnameControl="ngModel">
+
+                <span class="help-block" *ngIf="lastnameControl.invalid
+&& lastnameControl.touched">Last Name is Required or it Doesn't match the pattern</span>
+
+            </div>
+
+            <div class="form-group" [class.has-error]="genderRef.touched
+&& genderRef.invalid">
+
+                <label class="control-label">Gender</label>
+
+                <div class="form-control">
+
+                    <label class="radio-inline">
+
+                        <input type="radio" name="gender" required #genderRef="ngModel" value="male" [(ngModel)]="model.gender" checked> Male
+
+                    </label>
+
+                    <label class="radio-inline">
+
+                        <input type="radio" name="gender" required #genderRef="ngModel" value="female" [(ngModel)]="model.gender"> Female
+
+                    </label>
+
+                </div>
+
+               <!--  <span class="help-block" *ngIf="genderRef.touched
+&&userTypeRef.invalid">
+
+                    Gender is required
+
+                </span> -->
+
+            </div>
+
+            <div class="form-group" [class.has-error]="phnumRef.invalid
+&& phnumRef.touched">
+
+                <label>Phone Number</label>
+
+                <input type="text" required name="phnum" placeholder="Enter Phone Number" pattern="[5-9][0-9]{9}" class="form-control" [(ngModel)]="model.phnum"
+                    requried #phnumRef="ngModel">
+
+                <span class="help-block" *ngIf="phnumRef.touched
+&& phnumRef.invalid">
+
+                    PhoneNumber is required with 10 digits
+
+                </span>
+
+
+            </div>
+
+            <div class="form-group" [class.has-error]="email1.invalid
+&& email1.touched">
+
+                <label for="email" class="control-label"> Email</label>
+
+                <input type="email" id="email" placeholder="Enter E-mail" required name="email" class="form-control" [email]="email!==''"
+                    [(ngModel)]="model.email" #email1="ngModel">
+
+                <span class="help-block" *ngIf="email1.errors?.required
+&& email1.touched">Email is Required</span>
+
+                <span class="help-block" *ngIf="email1.errors?.email
+&& email1.touched">Email is Invalid</span>
+
+
+            </div>
+
+            <!-- <div class="form-group" [class.has-error]="passwordRef.touched
+&& passwordRef.invalid">
+
+                <label for="password" class="control-label">Password</label>
+
+                <input id="password" placeholder="Enter Password" required type="password" class="form-control" name="password" [(ngModel)]="model.password"
+                    #passwordRef="ngModel">
+
+                <span class="help-block" *ngIf="passwordRef.touched
+&& passwordRef.errors?.required">
+
+                    Password is required
+
+                </span>
+
+            </div>
+
+            <div class="form-group" [class.has-error]="confirmPasswordRef.touched
+&& confirmPasswordRef.invalid">
+
+                <label for="confirmPassword" class="control-label">Confirm Password</label>
+
+                <input name="confirmPassword" placeholder="Enter Confirm Password" appConfirmEqualValidator="password" required id="confirmPassword"
+                    type="password" class="form-control" [(ngModel)]="model.confirmPassword" #confirmPasswordRef="ngModel">
+
+                <span class="help-block" *ngIf="confirmPasswordRef.touched
+&& confirmPasswordRef.errors?.required">
+
+                    Confirm Password is required
+
+                </span>
+
+                <span class="help-block" *ngIf="confirmPasswordRef.touched
+&& confirmPasswordRef.errors?.notEqual
+&& !confirmPasswordRef.errors?.required">
+
+                    Password and Confirm Password does not match
+
+                </span>
+
+            </div> -->
+            <div class="form-group" [class.has-error]="passwordRef.touched
+
+&& passwordRef.invalid">
+
+<label for="password" class="control-label">Password</label>
+
+<input id="password" required type="password" placeholder="Password" [(ngModel)]="model.password"
+class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+[(ngModel)]="password" #passwordRef="ngModel">
+
+<span class="help-block" *ngIf="passwordRef.touched
+
+&& passwordRef.errors?.required ">
+
+Password is required
+
+</span>
+
+<span class="help-block" *ngIf="passwordRef.errors?.pattern">
+
+Password should contain atleast one small letter,capital letter,number,special character and minimum length of 8
+
+</span>
+
+</div> 
+
+<div class="form-group" [class.has-error]="confirmPasswordRef.touched
+
+&& confirmPasswordRef.invalid">
+
+<label for="confirmPassword" class="control-label">Confirm
+
+Password</label>
+
+<input name="confirmPassword" required id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="model.confirmPassword"
+type="password" class="form-control"
+
+[(ngModel)]="confirmPassword" pattern="{{passwordRef.value}}" #confirmPasswordRef="ngModel">
+
+<span class="help-block" *ngIf="confirmPasswordRef.touched
+
+&& confirmPasswordRef.errors?.required">
+
+Confirm Password is required
+
+</span>
+
+<span class="help-block" *ngIf=" confirmPasswordRef.errors?.pattern
+">
+
+Password and Confirm Password does not match
+
+</span> 
+
+</div> 
+
+
+
+
+
+            <div class="form-group">
+
+                <label for="securityQuestion"> Security Question</label>
+
+                <select id="securityQuestion" ng-model='nrSelect' name="securityQuestion" [(ngModel)]="model.securityQuestion" required class="form-control">
+
+                    <option value="">Security Question</option>
+
+                    <option value="What is your Favourite City?">What is Your Favourite City?</option>
+
+                    <option value="What is your Favourite Movie?">What is Your Favourite Movie?</option>
+
+                    <option value="What is your nick name?">What is your nick name?
+                    </option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="answer">Answer</label>
+
+                <input id="answer" pattern="[A-Za-z]{3,20}" type="text" class="form-control" name="answer" #answerControl="ngModel" [(ngModel)]="model.answer"
+                    placeholder="Please enter answer" required />
+
+                <div *ngIf='!answerControl.untouched'>
+
+                    <div *ngIf='answerControl.errors
+&& !answerControl.pattern' class="alert alert-danger">
+
+                        please enter the answer
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <button type="submit" class="registerbtn" (click)="addUser()">Signup</button>
+
+        </div>
+
+    </form>
+
+</body>
+
+</html>
+
+
